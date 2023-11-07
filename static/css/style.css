@@ -1,0 +1,145 @@
+/* DOCUMENTO CSS */
+/*RESET CSS*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px darkred solid;
+}
+
+body {
+    height: 700px;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #d8c690;
+}
+
+main {
+    min-height: 590px;
+    background-color:#d8c690;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main h1 {
+    font-size: 50px;
+    padding: 50px;
+    text-align: center;
+}
+
+.box1 {
+    width: 100%;
+    display: flex;
+	justify-content: space-between;
+	padding-left: 20px;
+    padding-bottom: 50px;
+}
+
+.coluna1 {
+    width: 50%;
+    font-size: 25px;
+    padding-left: 80px;
+    text-align: right;
+}
+
+.coluna2 {
+    width: 50%;
+    padding-right: 250px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: space-around;
+}
+
+.coluna2 img {
+    height: 350px;
+    border-radius: 20px;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.coluna2 img:hover{
+    transform: scale(1.1);
+    color: #fff;
+    -webkit-text-stroke: 2px transparent;
+}
+
+.box2 {
+    width: 100%;
+    display: flex;
+	justify-content: space-between;
+	padding-right: 20px;
+    padding-bottom: 50px;
+}
+
+.coluna3 {
+    width: 50%;
+    padding-left: 250px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: space-around;
+}
+
+.coluna3 img{
+    height: 350px;
+    border-radius: 20px;
+    transition: 0.3s cubic-bezier(0.75, 0.885, 0.32, 1.275);
+}
+
+.coluna3 img:hover{
+    transform: scale(1.1);
+    color: #fff;
+    -webkit-text-stroke: 2px transparent;
+}
+
+.coluna4 {
+    width: 50%;
+    font-size: 25px;
+    padding-right: 80px;
+    text-align: left;
+}
+
+.box3 {
+    width: 100%;
+    display: flex;
+	justify-content: space-between;
+	padding-left: 20px;
+    padding-bottom: 50px;
+}
+
+.coluna5 {
+    width: 50%;
+    font-size: 25px;
+    padding-left: 80px;
+    text-align: right;
+}
+
+.coluna6 {
+    width: 50%;
+    padding-right: 250px;
+    padding-left: 50px;
+}
+
+.carousel {
+    padding-top: 50px;
+    width: 800px;
+    padding-bottom: 30px;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.linha {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+}
+
+footer {
+    background-color:#198754;
+    color: white;
+}
