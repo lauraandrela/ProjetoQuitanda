@@ -1,4 +1,14 @@
 {% extends 'modelo.html' %}
 {% block conteudo %}
 
+<nav id="barra_adm">
+    {% if login %}
+    <h2>Bem-vindo ADM!</h2>
+    <a href="/newpost"><button class="bt_adm">New Post</button> </a>
+    <a href="/logout"><button class="bt_adm">Logout</button></a>
+    {% else %}
+    <a href="/login"><button class="bt_adm">Login</button></a>
+    {% endif %}
+</nav>
+
 {% endblock %}
