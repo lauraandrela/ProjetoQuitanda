@@ -19,7 +19,7 @@
                         <p class="text-danger fs-3">R$ {{ produto ['preco_prod'] }}</p>
                     </div>
                     <div class="col">
-                        <a href="/editprodutos/{{ produto [id_prod] }}"><i class="bi bi-pencil-square fs-3"></i></a>
+                        <a href="/editprodutos/{{ produto ['id_prod'] }}"><i class="bi bi-pencil-square fs-3"></i></a>
                         <a href="/excluir/{{ produto ['id_prod'] }}"
                             onclick="return confirm('Você tem certeza de que deseja excluir esse produto?')"><i
                                 class="bi bi-trash3 fs-3 ms-5"></i></a>

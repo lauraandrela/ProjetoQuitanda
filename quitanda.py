@@ -98,10 +98,10 @@ def cadastro():
         return redirect("/login")
     
 @app.route("/excluir/<id>")
-def excluir():
+def excluir(id):
     if verifica_sessao():
         id = int(id)
-        conexao = conecta_database
+        conexao = conecta_database()
         conexao.execute ('DELETE FROM produtos WHERE id_prod = ?', (id,))
         conexao.commit()
         conexao.close()
@@ -109,7 +109,7 @@ def excluir():
     else:
         return redirect("/login")
 
-@app.route("/editarprodutos", methods=["post"])
+@app.route("/editprodutos/<id_prod>")
 def editar(id_prod):
     if verifica_sessao():
         iniciar_db()
@@ -124,18 +124,25 @@ def editar(id_prod):
 @app.route("/editarprodutos", methods=['POST'])
 def editprod():
     id_prod = request.form['id_prod']
-    nome_prod = request.form['desc_prod']
+    nome_prod = request.form['nome_prod']
     desc_prod = request.form['desc_prod']
     preco_prod = request.form['preco_prod']
-    img_prod = request.form['img_prod']
-    id_foto = str(uuid.uuid4().hex)
-    filename = id_foto=nome_prod+'.png'
-    img_prod.save("static/img/produtos/"+filename)
-    conexao = conecta_database
-    conexao.execute('UPDATE produtos SET nome_prod = ?, desc_prod = ?, preco_prod = ?, img_prod = ?WHERE id_prod = ?', (nome_prod, desc_prod, preco_prod, filename, id_prod))
-    conexao.commit()
-    conexao.close()
-    return redirect ('/adm')
+    img_prod = request.files['img_prod']
+    
+    with conecta_database() as conexao:
+        current_img_prod = conexao.execute('SELECT img_prod FROM produtos WHERE id_prod = ?', (id_prod)).fetchall()[0]
+
+        if img_prod and (img_prod.filename):
+            id_foto = str(uuid.uuid4().hex)
+            filename = id_foto = nome_prod + '.png'
+            img_prod.save("static/img/produtos/" + filename)
+        else:
+            filename = current_img_prod
+
+        conexao.execute('UPTADE produtos SET nome_prod = ?, preco_prod = ?, img_prod = ? WHERE id_prod = ?', (nome_prod, desc_prod, preco_prod, filename, id_prod))
+        conexao.commit()
+        conexao.close()
+        return redirect ('/adm')
 
 @app.route("/busca", methods=["post"])
 def busca():
@@ -143,6 +150,6 @@ def busca():
     conexao = conecta_database()
     produtos = conexao.execute('SELECT * FROM produtos WHERE nome_prod LIKE "%" || ? || "%" ', (busca,)).fetchall()
     title = "Home"
-    return render_template("index.html", produtos=produtos title=title)
+    return render_template("index.html", produtos=produtos, title=title)
 
 app.run(debug=True)

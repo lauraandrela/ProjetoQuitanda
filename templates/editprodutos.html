@@ -1,4 +1,4 @@
-{% extends 'modelo.html %}
+{% extends 'modelo.html' %}
 {% block conteudo %}
 
 <div class="container">
@@ -6,9 +6,9 @@
         <h1 class="mb-3 display-4">Editar produtos</h1>
         <form action="/editarprodutos" method="post" enctype="multipart/form-data"
             class="col-sm-10 col-md-8 col-lg-6 text-center needs-validation" novalidate>
-            {% for produto in produto %}
+            {% for produto in produtos %}
             <div class="form-floating mb-3">
-                <input type="text" name="nome_prod" class="form-control" value="{{ produto ['nome_prod']}}"
+                <input type="text" name="nome_prod" class="form-control" value="{{ produto ['nome_prod'] }}"
                     placeholder="" autofocus />
                 <label for="nome_prod">Produto</label>
             </div>
@@ -39,3 +39,5 @@
         </form>
     </div>
 </div>
+
+{% endblock %}
