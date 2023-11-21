@@ -16,7 +16,7 @@ body {
 }
 
 main {
-    min-height: 590px;
+    min-height: 527.5px;
     background-color:#d8c690;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -137,6 +137,10 @@ main h1 {
     justify-content: space-around;
     align-items: center;
     padding: 30px;
+}
+
+.col {
+    
 }
 
 footer {
